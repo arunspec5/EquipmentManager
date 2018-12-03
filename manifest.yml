@@ -1,0 +1,6 @@
+applications:
+ - name: EquipmentManager
+   random-route: true
+   path: target/EquipmentManager.war
+   memory: 512M
+   instances: 1

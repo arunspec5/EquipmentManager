@@ -1,0 +1,100 @@
+<html>
+<head>
+<link rel="stylesheet" href="index.css">
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
+<body>
+	
+	<div class = "container " id="app">
+	<div  align=center>
+		<h1>Equipment Manager</h1>
+	</div>
+		<div class ="form-horizontal">
+		<div >
+			<div ><h2>Create an Equipment</h2></div>
+			</div>
+			<div class ="form-group">
+				<label for="num" class="control-label col-sm-2">Equipment Number</label><div class="col-sm-3"><input id="num" class="form-control"
+					v-model="equipment.equipmentNumber"></div>
+			</div>
+			<div class ="form-group">
+				<label for="num" class="control-label col-sm-2">Equipment Address</label><div class="col-sm-3"><input id="num" class="form-control"
+					v-model="equipment.address"></div>
+			</div>
+			<div class ="form-group">
+				<label for="num" class="control-label col-sm-2">Contract Start Date</label><div class="col-sm-3"><input id="num" class="form-control"
+					v-model="equipment.contractStartDate" placeholder="14/12/2010">
+					</div>
+			</div>
+			<div class ="form-group">
+				<label for="num" class="control-label col-sm-2">Contract End Date</label><div class="col-sm-3"><input id="num" class="form-control"
+					v-model="equipment.contractEndDate" placeholder="14/12/2017">
+					</div>
+			</div>
+			<div class = "form-group">
+				<label class="control-label col-sm-2">Status</label><div class="col-sm-3"><select class ="form-control " v-model="equipment.status">
+				<option selected="selected">Running</option>
+				<option>Stopped</option>
+				</select></div>
+			</div>
+			<p ><font color="green">{{postMessage}}</font><font color="red">{{postFailMessage}}</font></p>
+			<div class ="row"><div class="col-sm-6">
+				<button class="btn btn-primary" style="display: block; margin: auto;"
+					@click="posts">Create</button>
+			</div></div>
+		
+
+		<div>
+		
+			<h2> Enter the equipment number or list to display</h2>
+			<p><font color="red">{{failureMessage}}</font></p>
+			<div class="form-group">
+				<label for="eqnum" class="control-label col-sm-2">Limit</label><div class="col-sm-3"><input id="eqnum" class="form-control" v-model="limit" placeholder="5"></div>
+			</div>
+			<div class="row">
+			<div class="col-sm-6">
+			<button class="btn btn-primary" style="display: block; margin: auto;"
+				@click="lists">Show Equipments</button>
+				</div></div>
+			
+				<p>OR</p>
+			<div class="form-group">
+				<label for="limit" class="control-label col-sm-2">Equipment Number</label><div class="col-sm-3"><input id="limit" class ="form-control" v-model="number" placeholder="101"></div>
+			</div>
+			<div class="row">
+			<div class="col-sm-6">
+			<button class="btn btn-primary" style="display: block; margin: auto;"
+				@click="button">Search</button><p>   </p>
+				</div></div>
+			
+				<table class="table">
+				<tr>
+					<th>Equipment Number</th>
+					<th>Address</th>
+					<th>Contract Start Date</th>
+					<th>Contract End Date</th>
+					<th>Status</th>
+				</tr>
+				<tr v-for="item in items">
+					<td>{{item.equipmentNumber}}</td>
+					<td>{{item.address}}</td>
+					<td>{{item.contractStartDate}}</td>
+					<td>{{item.contractEndDate}}</td>
+					<td>{{item.status}}</td>
+			</table>
+		</div>
+		</div>
+	</div>
+
+	<script src="index.js"></script>
+</body>
+</html>
